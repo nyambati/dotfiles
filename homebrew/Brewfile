@@ -1,0 +1,22 @@
+# Brewfile
+# brew modules
+brew "ansible"
+brew "awscli"
+brew "git-duet"
+brew "go"
+brew "kubernetes-cli"
+brew "lynx"
+brew "mongodb"
+brew "node@6"
+brew "protobuf"
+brew "python"
+brew "python3"
+brew "redis"
+brew "sqlite"
+brew "terraform"
+
+# brew cask modules
+cask "virtualbox"
+cask "minikube"
+
+
