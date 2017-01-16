@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+install_homebrew(){
+    if ! command brew --version > /dev/null; then 
+        /usr/bin/ruby -e \
+        "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        echo "Brew is already Installled"
+    fi
+
+    brew tap homebrew/bundle
+}
+
+install_homebrew_packages() {
+    brew bundle --file=homebrew/Brewfile
+}
+
+install_homebrew
+install_homebrew_packages

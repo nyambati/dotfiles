@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function python-server {
+  python -m SimpleHTTPServer "$@"
+}
+
+

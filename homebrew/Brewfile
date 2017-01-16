@@ -14,9 +14,13 @@ brew "python3"
 brew "redis"
 brew "sqlite"
 brew "terraform"
+brew "watchman"
+brew "dnsmasq"
 
 # brew cask modules
 cask "virtualbox"
 cask "minikube"
+cask "sublime-text"
+cask "jet"
 
 
