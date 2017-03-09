@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+require_variable() {
+  local var=$1
+  [ -z "${!var}" ] && { error "ERROR: $var is not defined"; exit 1; }
+}
+# # source files
+# require_file() {
+#   local var_file = $1
+#   [ -f $var_file ] && { error " File ${var_file} not found"; exit 1}
+#   source var_file
+# }
+
+# Message login herlpers
+# error() {
+#   local RED="\033[0;31m"
+#   local NO_COLOUR="\033[0m"
+#   local MSG=$@
+#   echo -e ${RED}${MSG}${NO_COLOUR}
+# }

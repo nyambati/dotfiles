@@ -1,0 +1,37 @@
+---
+- include: generate_key.yml
+  when: generate_new_key | default(True)
+
+- name: Ensure that ssh connection key is defined
+  assert:
+    that: ssh_connection_key is defined
+
+- name: Set Authorized key(s) to the authorized keys file
+  become: yes
+  become_user: root
+  when: ssh_connection_key is defined
+  authorized_key:
+    exclusive: '{{ is_exclusive }}'
+    user: '{{ ssh_host_user }}'
+    state: present
+    path: '{{ authorized_keys_path }}'
+    manage_dir: '{{ should_manage_dir }}'
+    key: "{{ ssh_connection_key }}"
+
+- name: copy
+  when: generate_new_key != true
+  copy:
+    content: "{{ ssh_connection_key }}"
+    dest: "{{ ssh_key_path }}"
+
+- name: Add deployment key
+  when: ssh_deployment_key is defined
+  become: yes
+  become_user: root
+  authorized_key:
+    user: '{{ ssh_host_user }}'
+    state: present
+    path: '{{ authorized_keys_path }}'
+    manage_dir: '{{ should_manage_dir }}'
+    key: "{{ ssh_deployment_key }}"
+

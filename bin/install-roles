@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+DIRECTORY="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+ROOT_DIRECRORY=$(dirname $DIRECTORY)
+
+ANSIBLE_REQUIREMENTS=$ROOT_DIRECRORY/ansible/requirements.yml
+ANSIBLE_ROLES_PATH=$ROOT_DIRECRORY/ansible/playbooks/roles
+
+# include utilities
+source $ROOT_DIRECRORY/lib/utils
+source $ROOT_DIRECRORY/lib/common
+source $ROOT_DIRECRORY/lib/ansible
+
+
+install_ansible_roles $@;
+if is_success; then
+  success "Congrats your installatin wet on seemlessly"
+fi

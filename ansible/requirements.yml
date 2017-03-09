@@ -1,0 +1,4 @@
+---
+- src: nyambati.ssh-key-rotation
+  version: master
+  name: ssh-key-rotation

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+install_ansible_roles() {
+
+  require_variable ANSIBLE_REQUIREMENTS
+  require_variable ANSIBLE_ROLES_PATH
+
+  if ! type_exists ansible-galaxy; then
+    echo "Command does not exist"
+    exit 1
+  fi
+
+  if [ ! -e "$ANSIBLE_REQUIREMENTS" ]; then
+    error "ERROR: Ansible Galaxy requirements file not found"
+    exit 1
+  fi
+
+  warning "Installing Ansible roles with Ansible Galaxy"
+
+  ansible-galaxy install \
+    -r $ANSIBLE_REQUIREMENTS \
+    -p $ANSIBLE_ROLES_PATH $@
+}
