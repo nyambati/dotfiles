@@ -68,7 +68,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# plugins=(git)
+plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -157,8 +158,51 @@ gp () {
 }
 
 gpr() {
-    branch=$1
-    current_branch=`git rev-parse --abbrev-ref HEAD`
-    branch=${branch:-current_branch}
-    git pull origin $branch $@
+    _branch=$2
+    remote=$1
+    BRANCH=${_branch:-$(git rev-parse --abbrev-ref HEAD)}
+    ORIGIN=${remote:-'origin'}
+
+    git pull --rebase $ORIGIN $BRANCH $@
+}
+
+bold=$(tput bold)
+underline=$(tput sgr 0 1)
+reset=$(tput sgr0)
+purple=$(tput setaf 171)
+red=$(tput setaf 1)
+green=$(tput setaf 76)
+tan=$(tput setaf 3)
+blue=$(tput setaf 38)
+
+header() {
+  printf "\n${bold}${purple}==========  %s  ==========${reset}\n" "$@"
+}
+
+arrow() {
+  printf " ➜ $@\n"
+}
+
+success() {
+  printf "${green} ✔ %s${reset}\n" "$@"
+}
+
+error() {
+  printf "${red} ✖ %s${reset}\n" "$@"
+}
+
+warning() {
+  printf "${tan} ➜ %s${reset}\n" "$@"
+}
+
+underline() {
+  printf "${underline}${bold}%s${reset}\n" "$@"
+}
+
+bold() {
+  printf "${bold}%s${reset}\n" "$@"
+}
+
+note() {
+  printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
 }

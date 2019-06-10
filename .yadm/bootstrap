@@ -24,3 +24,8 @@ fi
 
 # install zsh shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# install zsh autocompletion
+CLONE_LOCATION=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+rm -rf $CLONE_LOCATION
+git clone https://github.com/zsh-users/zsh-autosuggestions  $CLONE_LOCATION
