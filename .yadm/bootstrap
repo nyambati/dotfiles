@@ -21,3 +21,6 @@ if command -v vim >/dev/null 2>&1; then
   echo "Bootstraping Vim"
   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
+
+# install zsh shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
