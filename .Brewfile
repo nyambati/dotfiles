@@ -1,10 +1,26 @@
 # brew packages
-brew 'jq'
-brew 'go'
-brew 'pipenv'
-brew 'awscli'
-brew 'dart'
-brew 'elixir'
-brew 'terraform'
-# brew tap packages
+brew "jq"
+brew "go"
+brew "pipenv"
+brew "awscli"
+brew "terraform"
+brew "adns"
+brew "ansible"
+brew "awscli"
+brew "go"
+brew "httpie"
+brew "k8sec"
+brew "k8stail"
+brew "kubectx"
+brew "kubernetes-cli"
+brew "kubernetes-helm"
+brew "kustomize"
+brew "pipenv"
+brew "python"
+brew "sqlite"
+brew "telnet"
+brew "watch"
+brew "wget"
+brew "yarn"
+
 
