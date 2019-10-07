@@ -1,3 +1,7 @@
+# taps
+tap "dtan4/dtan4"
+tap "homebrew/cask"
+
 # brew packages
 brew "jq"
 brew "go"
@@ -24,3 +28,9 @@ brew "wget"
 brew "yarn"
 
 
+
+cask "minikube"
+cask "virtualbox"
+cask "docker"
+cask "google-cloud-sdk"
+cask "slack"

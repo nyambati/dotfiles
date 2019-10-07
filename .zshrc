@@ -106,6 +106,10 @@ export NVM_DIR="$HOME/.nvm"
 alias shell="exec $SHELL"
 alias del="rm -rf"
 alias md="mkdir"
+alias ya="yadm"
+alias ys="ya status"
+alias yaa="ya add"
+alias yp="ya push origin master"
 
 # npm aliases
 
