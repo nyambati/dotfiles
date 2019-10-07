@@ -109,6 +109,7 @@ alias md="mkdir"
 alias ya="yadm"
 alias ys="ya status"
 alias yaa="ya add"
+alias yc="ya commit -s"
 alias yp="ya push origin master"
 
 # npm aliases
@@ -118,11 +119,11 @@ alias nig="npm install -g"
 
 # git aliases
 
-alias com="git commit -S"
+alias com="git commit -s"
 alias ga="git add"
 alias gs="git status"
 alias gl="git log"
-alias ca="git commit -S --amend"
+alias ca="git commit -s --amend"
 alias pl="git pull"
 alias goto="git checkout"
 alias master="goto master"
@@ -141,8 +142,10 @@ alias dc="docker-compose"
 
 # kubenertes
 alias kube="kubectl"
+alias kb="kubectl"
 alias kgp="kube get pods"
 alias kgs="kube get secrets"
+alias kgsv="kube get services"
 alias kl="kube logs"
 alias kd="kube delete"
 alias kgc="kube get cronjobs"
@@ -151,8 +154,9 @@ alias kd="kube delete"
 alias kdp="kube delete pods"
 alias kds="kube describe"
 alias ks="k8sec"
-alias ktx="kubectx"
+alias ktx="kbctx"
 alias kns="kubens"
+alias kpf="kube port-forward"
 # php
 
 alias art="php artisan"
@@ -192,6 +196,7 @@ gp () {
 gpr() {
     _branch=$2
     remote=$1
+    shift 2
     BRANCH=${_branch:-$(git rev-parse --abbrev-ref HEAD)}
     ORIGIN=${remote:-'origin'}
 
