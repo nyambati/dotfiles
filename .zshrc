@@ -118,7 +118,7 @@ alias com="git commit -S"
 alias ga="git add"
 alias gs="git status"
 alias gl="git log"
-alias ca="git commit --amend"
+alias ca="git commit -S --amend"
 alias pl="git pull"
 alias goto="git checkout"
 alias master="goto master"
@@ -141,7 +141,14 @@ alias kgp="kube get pods"
 alias kgs="kube get secrets"
 alias kl="kube logs"
 alias kd="kube delete"
-
+alias kgc="kube get cronjobs"
+alias kx="kube exec -it"
+alias kd="kube delete"
+alias kdp="kube delete pods"
+alias kds="kube describe"
+alias ks="k8sec"
+alias ktx="kubectx"
+alias kns="kubens"
 # php
 
 alias art="php artisan"
@@ -150,6 +157,21 @@ alias tinker="art tinker"
 # Google Cloud plartform
 
 alias gcp="gcloud"
+
+# terraform 
+alias t=terraform
+alias tp="terraform plan"
+alias ta="terraform apply"
+alias trs="terraform refresh"
+alias tw="terraform workspace"
+alias twn="terraform workspace new"
+alias twl="terraform workspace list"
+alias twr="terraform workspace remove"
+alias tws="terraform workspace select"
+
+# minikube
+alias ms="minikube start"
+alias mtp="minikube stop"
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -212,3 +234,26 @@ bold() {
 note() {
   printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
 }
+
+b64enc() {
+	local readonly _v=$1
+	echo $1 | base64 --decode 
+}
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# kube functions
+# kube get configmap/shuttle-backend-dev-signup-web -n dev -o json | jq -r '.data|to_entries|map("\(.key)=\(.value|tostring)")|.[]'
+kcd() {
+  echo $@
+  shift 1
+  echo $@
+  # kube get configmap/shuttle-backend-dev-signup-web -o json
+}
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export GPG_TTY=/dev/ttys001
+export LC_ALL=en_US.UTF-8
