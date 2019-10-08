@@ -72,7 +72,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
-plugins=(zsh-autosuggestions)
+plugins=(zsh-autosuggestions zsh-kubectl-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -155,7 +155,8 @@ alias kd="kube delete"
 alias kdp="kube delete pods"
 alias kds="kube describe"
 alias ks="k8sec"
-alias ktx="kbctx"
+alias ktx="kubectx"
+alias ctx="kubectx"
 alias kns="kubens"
 alias kpf="kube port-forward"
 # php
@@ -267,3 +268,7 @@ kcd() {
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GPG_TTY=/dev/ttys001
 export LC_ALL=en_US.UTF-8
+# kubernetes context
+autoload -U colors; colors
+color=green
+RPROMPT='%{$fg[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
