@@ -111,6 +111,7 @@ alias ys="y status"
 alias ya="y add"
 alias yc="y commit -s"
 alias yp="y push origin master"
+alias yca="yc --amend"
 
 # npm aliases
 
@@ -137,6 +138,7 @@ alias glp="git log --pretty=oneline"
 alias gcl="git clone"
 alias gra="git remote add"
 alias gr="git remote"
+alias gpr="git pull --rebase"
 
 # docker aliases
 alias dc="docker-compose"
@@ -193,10 +195,6 @@ grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
 # custom function
 gp () {
   git push origin `git rev-parse --abbrev-ref HEAD` $@
-}
-
-gpr() {
-  git pull --rebase origin $(git rev-parse --abbrev-ref HEAD) $@
 }
 
 bold=$(tput bold)
