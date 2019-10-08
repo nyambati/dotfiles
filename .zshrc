@@ -192,17 +192,11 @@ grep -slR "PRIVATE" ~/.ssh | xargs ssh-add &> /dev/null
 
 # custom function
 gp () {
-   git push origin `git rev-parse --abbrev-ref HEAD` $@
+  git push origin `git rev-parse --abbrev-ref HEAD` $@
 }
 
 gpr() {
-    _branch=$2
-    remote=$1
-    shift 2
-    BRANCH=${_branch:-$(git rev-parse --abbrev-ref HEAD)}
-    ORIGIN=${remote:-'origin'}
-
-    git pull --rebase $ORIGIN $BRANCH $@
+  git pull --rebase origin $(git rev-parse --abbrev-ref HEAD) $@
 }
 
 bold=$(tput bold)
