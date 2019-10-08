@@ -112,6 +112,7 @@ alias ya="y add"
 alias yc="y commit -s"
 alias yp="y push origin master"
 alias yca="yc --amend"
+alias ypr="y pull --rebase"
 
 # npm aliases
 
@@ -264,3 +265,6 @@ export LC_ALL=en_US.UTF-8
 autoload -U colors; colors
 color=green
 RPROMPT='%{$fg[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+
+# kubectl compeletion
+source ~/.kubectl
