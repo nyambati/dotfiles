@@ -72,7 +72,6 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
-plugins=(zsh-autosuggestions zsh-kubectl-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -265,6 +264,3 @@ export LC_ALL=en_US.UTF-8
 autoload -U colors; colors
 color=green
 RPROMPT='%{$fg[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-
-# kubectl compeletion
-source ~/.kubectl
