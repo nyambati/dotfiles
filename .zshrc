@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
+plugins=(zsh-autosuggestions zsh-kubectl-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -226,18 +226,6 @@ warning() {
   printf "${tan} ➜ %s${reset}\n" "$@"
 }
 
-underline() {
-  printf "${underline}${bold}%s${reset}\n" "$@"
-}
-
-bold() {
-  printf "${bold}%s${reset}\n" "$@"
-}
-
-note() {
-  printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
-}
-
 b64enc() {
 	local readonly _v=$1
 	echo $1 | base64 --decode 
@@ -249,20 +237,11 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
 
-# kube functions
-# kube get configmap/shuttle-backend-dev-signup-web -n dev -o json | jq -r '.data|to_entries|map("\(.key)=\(.value|tostring)")|.[]'
-kcd() {
-  echo $@
-  shift 1
-  echo $@
-  # kube get configmap/shuttle-backend-dev-signup-web -o json
-}
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GPG_TTY=/dev/ttys001
 export LC_ALL=en_US.UTF-8
-# kubernetes context
+
 autoload -U colors; colors
-color=green
-RPROMPT='%{$fg[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
 source $HOME/workspace/hero/.hero
