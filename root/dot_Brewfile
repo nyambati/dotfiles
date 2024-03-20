@@ -1,0 +1,37 @@
+# tap
+tap "warrensbox/tap"
+tap "tokiwong/tap"
+tap "derailed/k9s"
+
+# cask
+
+cask "spotify"
+cask "visual-studio-code"
+cask "1password"
+
+# brew packages
+brew "jq"
+brew "go"
+brew "pipenv"
+brew "awscli"
+brew "warrensbox/tap/tfswitch"
+brew "awscli"
+brew "kubernetes-cli"
+brew "tokiwong/tap/helm-switcher"
+brew "telnet"
+brew "watch"
+brew "derailed/k9s/k9s"
+brew "saml2aws"
+brew "kubectx"
+brew "helmfile"
+brew "sops"
+brew "tgswitch"
+brew "yq"
+brew "tree"
+brew "colima"
+brew "golangci-lint"
+brew "docker"
+brew "docker-compose"
+brew "goreleaser"
+brew "helm-docs"
+brew "terraform-docs"

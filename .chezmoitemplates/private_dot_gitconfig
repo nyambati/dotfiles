@@ -1,0 +1,102 @@
+# vi:sw=2:sts=2:ts=2:noexpandtab
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	status = auto
+
+
+[core]
+	autocrlf = false
+	excludesfile = ~/.gitignore
+	whitespace = blank-at-eol,blank-at-eof,space-before-tab
+
+[push]
+	default = simple
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[rebase]
+	# Automatically stash before a rebase and unstash afterwards.
+	autoStash = true
+
+[commit]
+	# Show diff when preparing commit message
+	verbose = true
+	template = ~/.gitmessage
+	gpgsign = false
+
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+
+[mergetool]
+	prompt = false
+	keepBackup = false
+
+[mergetool "vimdiff"]
+	cmd = vim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+###
+### Git-up specific
+### https://github.com/aanand/git-up
+###
+[git-up "rebase"]
+	arguments = --preserve-merges
+
+###
+### Github specific
+###
+[github]
+	user = nyambati
+
+# read from given uri
+# push to writable one
+# http://bit.ly/g9c9Y2
+#
+[url "http://github.com/"]
+	insteadOf = "gh:"
+
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "http://github.com/"
+	pushInsteadOf = "gh:"
+	insteadOf = "https://github.com/""
+
+[credential]
+	helper = "cache --timeout 86400"
+
+[pack]
+	threads = 2
+
+###
+### Include local overrides
+###
+[include]
+	path = .gitconfig.local
+
+[pull]
+	rebase = true
+
+[diff "sopsdiffer"]
+	textconv = sops -d
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[user]
+	email = 12892110+nyambati@users.noreply.github.com
+	name = Thomas Nyambati
+	signingkey = {{ onepasswordRead "op://personal/github/public key" }}
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
