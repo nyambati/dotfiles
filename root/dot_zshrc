@@ -106,4 +106,4 @@ export LC_ALL=en_US.UTF-8
 
 for FILE in ~/esaiga/*.sh ; do source $FILE ; done
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
