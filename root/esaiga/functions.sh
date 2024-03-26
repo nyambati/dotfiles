@@ -1,3 +1,5 @@
+WORKSPACE=$HOME/workspace/
+
 profiles=(
     pandacare-stg
     pandacare-prod
@@ -17,3 +19,12 @@ profiles=(
 
 
 alias sso='for profile in ${profiles[@]}; do saml2aws --skip-prompt login --force -a $profile; done;'
+
+
+hf() {
+    readonly labels=$1
+    readonly command=$2
+    [ -z "$labels" ] && echo "Missing chart labels key=value"; return
+    [ -z "$command" ] && echo "missing command diff|sync"; return
+    helmfile --file $WORKSPACE/hero/logistics-kubernetes/helmfiles/observability/helmfile.yaml --skip-deps -l $labels $command
+}
