@@ -28,3 +28,12 @@ hf() {
     [ -z "$command" ] && echo "missing command diff|sync"; return
     helmfile --file $WORKSPACE/hero/logistics-kubernetes/helmfiles/observability/helmfile.yaml --skip-deps -l $labels $command
 }
+
+
+ste() {
+    readonly secret_id=$1
+    SECRETS=$(aws secretsmanager get-secret-value --secret-id $secret_id | jq -r ".SecretString|fromjson|to_entries|map(\"\(.key|ascii_upcase)=\(.value|tostring|@json)\")|.[]")
+    for secret in ${SECRETS[@]}; do
+        export $secret
+    done
+}

@@ -36,6 +36,7 @@ alias glp="git log --pretty=oneline"
 alias gcl="git clone"
 alias gra="git remote add"
 alias gr="git remote"
+alias gp="git p"
 alias gpr="git pull --rebase origin"
 
 # docker aliases
