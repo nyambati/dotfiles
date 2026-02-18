@@ -13,7 +13,7 @@ hf() {
         return
     fi
 
-    helmfile --file $WORKSPACE/hero/logistics-kubernetes/helmfiles/observability/helmfile.yaml --skip-deps -l $labels $command
+    helmfile --file $WORKSPACE/hero/logistics-kubernetes/helmfiles/observability/helmfile.yaml --skip-deps -l $labels $command ${@:3}
 }
 
 
@@ -30,7 +30,7 @@ sso() {
 }
 
 hfd(){
-    hf $@ diff
+    hf $@ diff --context 1
 }
 
 hfs(){
