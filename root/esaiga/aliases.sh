@@ -36,7 +36,7 @@ alias glp="git log --pretty=oneline"
 alias gcl="git clone"
 alias gra="git remote add"
 alias gr="git remote"
-alias gp="git p"
+alias gp="git push"
 alias gpr="git pull --rebase origin"
 
 # docker aliases
@@ -91,3 +91,13 @@ alias z=zed
 alias c=colima
 alias cs="c start --cpu 2 --memory 8"
 alias ch="chezmoi"
+
+# terragrunt
+alias tg="terragrunt"
+alias tgp="terragrunt plan"
+alias tga="terragrunt apply"
+alias tgd="terragrunt destroy"
+alias tgs="terragrunt show"
+
+# go run
+alias gr="go run"
