@@ -101,3 +101,9 @@ alias tgs="terragrunt show"
 
 # go run
 alias gr="go run"
+
+alias ch="chezmoi"
+alias chs="chezmoi status"
+alias chd="chezmoi diff"
+alias chu="chezmoi update"
+alias chp="chezmoi apply"
